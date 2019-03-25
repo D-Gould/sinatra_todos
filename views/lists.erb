@@ -1,13 +1,14 @@
 
 <ul id="lists">
-  <% @lists.each do |list| %>
+  <% @lists.each_with_index do |list, idx| %>
     <li>
-      <a>
+      <a href="/lists/<%= idx %>">
       <h2><%=list[:name]%></h2>
       <p><%=list[:todos].count%></p>
       </a>
     </li>
   <% end %>
 </ul>
-
-<a href="/lists/new">New List</a>
+<% content_for :header_links do %>
+  <a href="/lists/new">New List</a>
+<% end %>
