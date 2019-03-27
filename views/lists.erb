@@ -1,14 +1,14 @@
 
 <ul id="lists">
-  <% @lists.each_with_index do |list, idx| %>
-    <li>
-      <a href="/lists/<%= idx %>">
-      <h2><%=list[:name]%></h2>
-      <p><%=list[:todos].count%></p>
-      </a>
-    </li>
+  <% sort_list(@lists) do |list, idx| %>
+      <li class=<%=list_class(list)%>>
+        <a href="/lists/<%= idx %>">
+        <h2><%=list[:name]%></h2>
+        <p><%=remaining_todos(list)%> / <%=todos_count(list)%></p>
+        </a>
+      </li>
   <% end %>
 </ul>
 <% content_for :header_links do %>
-  <a href="/lists/new">New List</a>
+  <a class="add" href="/lists/new">New List</a>
 <% end %>
