@@ -69,6 +69,10 @@ class DatabasePersistence
   def mark_all_todos_complete(list_id)
     query("UPDATE todos SET completed = true WHERE list_id = $1", list_id)
   end
+  
+  def disconnect
+    @db.close
+  end
 
   private
 
@@ -81,9 +85,5 @@ class DatabasePersistence
         name: todos_tuple["name"],
         completed: todos_tuple["completed"] == 't'}
     end
-  end
-
-  def disconnect
-    @db.close
   end
 end
