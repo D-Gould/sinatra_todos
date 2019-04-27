@@ -82,4 +82,8 @@ class DatabasePersistence
         completed: todos_tuple["completed"] == 't'}
     end
   end
+
+  def disconnect
+    @db.close
+  end
 end
