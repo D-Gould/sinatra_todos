@@ -1,8 +1,8 @@
 <h3>Click "New List" to create a new todo list. Click on a list to view, edit or add todos.</h3>
 <ul id="lists">
-  <% sort_list(@lists) do |list, idx| %>
+  <% sort_list(@lists) do |list| %>
       <li class=<%=list_class(list)%>>
-        <a href="/lists/<%= idx %>">
+        <a href="/lists/<%= list[:id] %>">
         <h2><%=list[:name]%></h2>
         <p><%=remaining_todos(list)%> / <%=todos_count(list)%></p>
         </a>
